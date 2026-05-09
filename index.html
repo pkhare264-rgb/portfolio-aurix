@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+    <script>
+      try {
+        const _originalParse = JSON.parse;
+        JSON.parse = function(text, reviver) {
+          if (text === "undefined" || text === undefined) return undefined;
+          return _originalParse(text, reviver);
+        };
+        const originalFetch = window.fetch;
+        Object.defineProperty(window, 'fetch', {
+          configurable: true,
+          enumerable: true,
+          get: function() { return originalFetch; },
+          set: function(v) { console.warn('Ignoring window.fetch override attempt', v); }
+        });
+      } catch (e) {
+        console.error('Could not protect globals', e);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
