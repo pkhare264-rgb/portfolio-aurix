@@ -67,8 +67,8 @@ export default function Work() {
     <section id="work" className="relative py-32 md:py-48 bg-[#030712] overflow-hidden">
       {/* Cinematic Navy Atmosphere Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[120px] mix-blend-screen" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[60vw] h-[60vw] bg-indigo-900/10 rounded-full blur-[150px] mix-blend-screen" />
+        <div className="absolute top-0 left-1/4 w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[60vw] h-[60vw] bg-indigo-900/10 rounded-full blur-[100px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,rgba(0,0,0,0)_80%)]" />
       </div>
 
@@ -171,7 +171,7 @@ export default function Work() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 sm:p-6 md:p-12"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-6 md:p-12"
             onClick={() => setSelectedItem(null)}
           >
             <button 

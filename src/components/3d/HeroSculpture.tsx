@@ -19,16 +19,10 @@ export default function HeroSculpture() {
           const mesh = child as THREE.Mesh;
           mesh.material = new THREE.MeshPhysicalMaterial({
             color: '#c4b5fd', // Light purple tint
-            metalness: 0.1,
-            roughness: 0.05,
-            transmission: 1.0,
-            thickness: 0.5,
-            ior: 1.5,
-            iridescence: 1.0,
-            iridescenceIOR: 1.3,
-            iridescenceThicknessRange: [100, 400],
-            clearcoat: 1.0,
-            clearcoatRoughness: 0.1,
+            metalness: 0.2,
+            roughness: 0.1,
+            clearcoat: 0.8,
+            clearcoatRoughness: 0.2,
             emissive: '#c084fc',
             emissiveIntensity: 0.1
           });
@@ -41,7 +35,7 @@ export default function HeroSculpture() {
     <>
       <Environment preset="city" />
       <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} maxPolarAngle={Math.PI / 2 + 0.1} />
-      <Float speed={2} rotationIntensity={0.2} floatIntensity={2}>
+      <Float speed={1.5} rotationIntensity={0.1} floatIntensity={1.5}>
         <group ref={groupRef}>
           <primitive object={clonedScene} scale={2} position={[0, -1, 0]} />
         </group>
@@ -54,6 +48,8 @@ export default function HeroSculpture() {
         blur={2} 
         far={4.5} 
         color="#9333ea" 
+        resolution={256}
+        frames={1}
       />
       
       <ambientLight intensity={0.8} />

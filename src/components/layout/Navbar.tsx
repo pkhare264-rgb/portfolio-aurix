@@ -31,7 +31,7 @@ export default function Navbar() {
         className={cn(
           'fixed top-0 inset-x-0 z-50 transition-all duration-500 will-change-[padding,background-color] ease-[cubic-bezier(0.16,1,0.3,1)]',
           scrolled 
-            ? 'py-3 bg-obsidian/80 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-obsidian/50' 
+            ? 'py-3 bg-obsidian/80 backdrop-blur-md border-b border-white/5 shadow-2xl shadow-obsidian/50' 
             : 'py-8 bg-transparent border-b border-transparent'
         )}
       >
@@ -46,7 +46,7 @@ export default function Navbar() {
               <motion.img 
                 src="/logo.png" 
                 alt="AURIX Studios" 
-                className="h-20 md:h-28 object-contain drop-shadow-[0_0_15px_rgba(147,51,234,0.3)]" 
+                className="h-20 md:h-28 object-contain" 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}

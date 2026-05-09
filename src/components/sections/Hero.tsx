@@ -15,7 +15,7 @@ export default function Hero() {
 
       {/* 3D Scene */}
       <div className="absolute w-full h-[80vh] top-[10vh] left-0 z-10 opacity-80 touch-none">
-        <Canvas camera={{ position: [0, 0, 8], fov: 45 }} style={{ touchAction: 'none' }}>
+        <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]} gl={{ powerPreference: "high-performance", antialias: false }} style={{ touchAction: 'none' }}>
           <Suspense fallback={null}>
             <HeroSculpture />
           </Suspense>

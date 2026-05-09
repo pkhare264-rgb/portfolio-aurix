@@ -14,8 +14,8 @@ export default function PastWork() {
       <main className="flex-1 bg-[#030712] min-h-screen pt-32 pb-24 px-6 md:px-12 relative overflow-hidden">
         {/* Cinematic Navy Atmosphere Background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[120px] mix-blend-screen" />
-          <div className="absolute bottom-1/4 -right-1/4 w-[60vw] h-[60vw] bg-indigo-900/10 rounded-full blur-[150px] mix-blend-screen" />
+          <div className="absolute top-0 left-1/4 w-[50vw] h-[50vw] bg-blue-900/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-1/4 -right-1/4 w-[60vw] h-[60vw] bg-indigo-900/10 rounded-full blur-[100px]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,rgba(0,0,0,0)_80%)]" />
         </div>
 
