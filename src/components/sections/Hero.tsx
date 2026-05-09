@@ -5,7 +5,7 @@ import HeroSculpture from '../3d/HeroSculpture';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-center pt-20">
+    <section className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col items-center pt-24 md:pt-20">
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-champagne/10 rounded-full blur-[120px]" />
@@ -14,7 +14,7 @@ export default function Hero() {
       </div>
 
       {/* 3D Scene */}
-      <div className="absolute w-full h-[80vh] top-[10vh] left-0 z-10 opacity-80 pointer-events-none">
+      <div className="relative md:absolute w-full h-[40vh] md:h-[80vh] md:top-[10vh] md:left-0 z-10 opacity-80 pointer-events-none flex-shrink-0">
         <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]} gl={{ powerPreference: "high-performance", antialias: false }}>
           <Suspense fallback={null}>
             <HeroSculpture />
@@ -23,7 +23,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto mt-auto mb-32 flex flex-col items-center pointer-events-none">
+      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto mt-auto mb-20 md:mb-32 flex flex-col items-center pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
