@@ -4,17 +4,17 @@ import { Suspense, lazy, useState, useEffect } from 'react';
 const HeroScene = lazy(() => import('./HeroScene'));
 
 export default function Hero() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobileOrTablet(window.innerWidth < 1024);
+    handleResize(); // Initial check
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <section className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col items-center pt-24 md:pt-20">
+    <section className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col items-center justify-center pt-24 lg:pt-20">
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-champagne/10 rounded-full blur-[120px]" />
@@ -23,8 +23,8 @@ export default function Hero() {
       </div>
 
       {/* 3D Scene */}
-      {!isMobile && (
-        <div className="hidden md:block absolute w-full h-[80vh] top-[10vh] left-0 z-10 opacity-80 pointer-events-none flex-shrink-0">
+      {!isMobileOrTablet && (
+        <div className="hidden lg:block absolute w-full h-[80vh] top-[10vh] left-0 z-10 opacity-80 pointer-events-none flex-shrink-0">
           <Suspense fallback={null}>
             <HeroScene />
           </Suspense>
@@ -32,7 +32,7 @@ export default function Hero() {
       )}
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto mt-auto mb-20 md:mb-32 flex flex-col items-center pointer-events-none">
+      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto lg:mt-auto mb-20 lg:mb-32 flex flex-col items-center pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
