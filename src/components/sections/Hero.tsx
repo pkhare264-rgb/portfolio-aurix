@@ -1,9 +1,18 @@
 import { motion } from 'motion/react';
-import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
-import HeroSculpture from '../3d/HeroSculpture';
+import { Suspense, lazy, useState, useEffect } from 'react';
+
+const HeroScene = lazy(() => import('./HeroScene'));
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col items-center pt-24 md:pt-20">
       {/* Background Ambience */}
@@ -14,13 +23,13 @@ export default function Hero() {
       </div>
 
       {/* 3D Scene */}
-      <div className="relative md:absolute w-full h-[40vh] md:h-[80vh] md:top-[10vh] md:left-0 z-10 opacity-80 pointer-events-none flex-shrink-0">
-        <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]} gl={{ powerPreference: "high-performance", antialias: false }}>
+      {!isMobile && (
+        <div className="hidden md:block absolute w-full h-[80vh] top-[10vh] left-0 z-10 opacity-80 pointer-events-none flex-shrink-0">
           <Suspense fallback={null}>
-            <HeroSculpture />
+            <HeroScene />
           </Suspense>
-        </Canvas>
-      </div>
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative z-20 text-center px-4 max-w-5xl mx-auto mt-auto mb-20 md:mb-32 flex flex-col items-center pointer-events-none">
