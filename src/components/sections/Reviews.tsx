@@ -1,25 +1,9 @@
 import { motion } from 'motion/react';
-import { Star } from 'lucide-react';
 
-const reviews = [
-  {
-    name: "Rohan Desai",
-    company: "TechNova Solutions",
-    text: "Aurix Studios delivered beyond our expectations. The visual quality and motion design for our new app was phenomenal. Truly world-class work.",
-    rating: 5
-  },
-  {
-    name: "Ananya Sharma",
-    company: "Elevate Ventures",
-    text: "Working with the Aurix team was a seamless experience. They understood our brand vision immediately and translated it into a luxurious digital experience.",
-    rating: 5
-  },
-  {
-    name: "Vikram Mehta",
-    company: "Mehta & Co.",
-    text: "The web experience they built for us is fast, elegant, and perfectly encapsulates our brand identity. Their attention to detail is unmatched in the industry.",
-    rating: 5
-  }
+const reviewImages = [
+  "/test1.png",
+  "/test2.png",
+  "/test3.png"
 ];
 
 export default function Reviews() {
@@ -39,28 +23,23 @@ export default function Reviews() {
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {reviews.map((review, index) => (
+        {reviewImages.map((image, index) => (
           <motion.div
-            key={review.name}
+            key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-card p-8 rounded-2xl flex flex-col items-start border border-champagne/10 hover:border-champagne/30 transition-colors duration-500"
+            className="flex flex-col items-center justify-center p-4 md:p-6 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-champagne/20 hover:bg-white/[0.05] transition-all duration-500 group"
           >
-            <div className="flex gap-1 mb-6 text-champagne">
-              {[...Array(review.rating)].map((_, i) => (
-                <Star key={i} size={18} fill="currentColor" />
-              ))}
-            </div>
-            
-            <p className="text-ivory/80 text-lg font-light leading-relaxed mb-8 flex-grow">
-              "{review.text}"
-            </p>
-            
-            <div className="mt-auto">
-              <h4 className="font-display font-medium text-ivory tracking-wide">{review.name}</h4>
-              <span className="text-xs uppercase tracking-widest text-champagne/70 mt-1 block">{review.company}</span>
+            <div className="relative w-full rounded-2xl overflow-hidden bg-white/5 p-2 backdrop-blur-sm border border-white/5">
+              <div className="absolute inset-0 bg-obsidian mix-blend-color opacity-50 z-10 group-hover:opacity-0 transition-opacity duration-700 pointer-events-none" />
+              <img 
+                src={image} 
+                alt={`Client Review ${index + 1}`} 
+                className="w-full h-auto object-contain block opacity-70 grayscale-[0.8] group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-[0.16,1,0.3,1] transform group-hover:scale-105"
+                loading="lazy"
+              />
             </div>
           </motion.div>
         ))}

@@ -7,6 +7,7 @@ import Footer from '../components/layout/Footer';
 export default function PastWork() {
   const [showWebsiteModal, setShowWebsiteModal] = useState(false);
   const [showAdsModal, setShowAdsModal] = useState(false);
+  const [showMagazineModal, setShowMagazineModal] = useState(false);
 
   return (
     <>
@@ -50,7 +51,10 @@ export default function PastWork() {
                 href={project.url}
                 key={project.id}
                 onClick={(e) => {
-                  if (project.id === 2) {
+                  if (project.id === 1) {
+                    e.preventDefault();
+                    setShowMagazineModal(true);
+                  } else if (project.id === 2) {
                     e.preventDefault();
                     setShowWebsiteModal(true);
                   } else if (project.id === 3) {
@@ -81,6 +85,65 @@ export default function PastWork() {
           </div>
         </div>
       </main>
+
+      <AnimatePresence>
+        {showMagazineModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6"
+            onClick={() => setShowMagazineModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#050510] border border-white/10 rounded-3xl p-8 md:p-12 max-w-5xl w-full relative shadow-[0_0_100px_rgba(0,0,0,0.5)] max-h-[90vh] overflow-y-auto custom-scrollbar"
+            >
+              <button 
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all z-50"
+                onClick={() => setShowMagazineModal(false)}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+
+              <div className="mb-8 pr-12">
+                <span className="text-xs uppercase tracking-[0.2em] text-champagne font-mono mb-4 block">Selected Works</span>
+                <h3 className="font-display text-3xl md:text-4xl text-white font-light tracking-tight mb-4">Magazine Publication</h3>
+                <p className="text-white/60 font-light text-lg">
+                  Explore our editorial campaigns and cover designs.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {[
+                  { id: 1, title: 'Front Cover', image: '/frontcover.png' },
+                  { id: 2, title: 'Magazine Page', image: '/magazinepage.png' },
+                  { id: 3, title: 'Editorial Spread', image: '/k.png' },
+                ].map((mag) => (
+                  <div key={mag.id} className="relative group rounded-[2rem] overflow-hidden bg-white/5 border border-white/5 aspect-[3/4]">
+                    <img 
+                      src={mag.image}
+                      alt={mag.title}
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 pointer-events-none" />
+                    <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
+                      <span className="text-[10px] text-champagne tracking-widest font-mono uppercase mb-2 block">0{mag.id}</span>
+                      <h4 className="text-white text-lg font-medium">{mag.title}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {showWebsiteModal && (
@@ -190,11 +253,11 @@ export default function PastWork() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   { id: 1, title: 'Future Concepts', video: '/Video-456.mp4' },
                   { id: 2, title: 'Cinematic AI', video: '/Video-417.mp4' },
-                  { id: 3, title: 'Khetpure Spotlight', video: '/khetpure.mp4' },
+                  { id: 3, title: 'AI Product Ad', video: '/khetpure.mp4' },
                 ].map((ad) => (
                   <div key={ad.id} className="relative group rounded-[2rem] overflow-hidden bg-black/50 border border-white/5 aspect-[9/16]">
                     <video 

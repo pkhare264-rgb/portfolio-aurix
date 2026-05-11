@@ -29,6 +29,8 @@ export default function Contact() {
         </div>
 
         <motion.form 
+          action="https://formspree.io/f/mnjwlvya"
+          method="POST"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -40,6 +42,8 @@ export default function Contact() {
               <input 
                 type="text" 
                 id="name"
+                name="name"
+                required
                 className="w-full bg-transparent border-b border-ivory/20 py-4 text-ivory placeholder-transparent focus:outline-none focus:border-champagne peer"
                 placeholder="Name"
               />
@@ -54,6 +58,8 @@ export default function Contact() {
               <input 
                 type="email" 
                 id="email"
+                name="email"
+                required
                 className="w-full bg-transparent border-b border-ivory/20 py-4 text-ivory placeholder-transparent focus:outline-none focus:border-champagne peer"
                 placeholder="Email"
               />
@@ -70,6 +76,7 @@ export default function Contact() {
             <input 
               type="text" 
               id="company"
+              name="company"
               className="w-full bg-transparent border-b border-ivory/20 py-4 text-ivory placeholder-transparent focus:outline-none focus:border-champagne peer"
               placeholder="Company"
             />
@@ -84,6 +91,8 @@ export default function Contact() {
           <div className="relative group">
             <textarea 
               id="project"
+              name="project"
+              required
               rows={4}
               className="w-full bg-transparent border-b border-ivory/20 py-4 text-ivory placeholder-transparent focus:outline-none focus:border-champagne peer resize-none"
               placeholder="Project Details"
@@ -97,7 +106,7 @@ export default function Contact() {
           </div>
 
           <div className="pt-8 text-center">
-            <button type="button" className="relative overflow-hidden group bg-champagne text-obsidian rounded-full px-12 py-5 text-sm uppercase tracking-[0.2em] font-medium transition-transform hover:scale-105 active:scale-95 duration-300">
+            <button type="submit" className="relative overflow-hidden group bg-champagne text-obsidian rounded-full px-12 py-5 text-sm uppercase tracking-[0.2em] font-medium transition-transform hover:scale-105 active:scale-95 duration-300">
               <span className="relative z-10 transition-colors duration-300">Submit Request</span>
               <div className="absolute inset-0 bg-white/20 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             </button>
