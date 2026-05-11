@@ -11,6 +11,7 @@ import Services from './components/sections/Services';
 import Work from './components/sections/Work';
 import Reviews from './components/sections/Reviews';
 import Process from './components/sections/Process';
+import FAQ from './components/sections/FAQ';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 import PastWork from './pages/PastWork';
@@ -26,6 +27,7 @@ function Home() {
         <Work />
         <Reviews />
         <Process />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
