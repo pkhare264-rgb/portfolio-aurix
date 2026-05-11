@@ -7,8 +7,8 @@ export default function Footer() {
         </div>
         
         <div className="flex gap-8 text-xs uppercase tracking-widest text-ivory/50">
-          <a href="#" className="hover:text-champagne transition-colors">WhatsApp</a>
-          <a href="#" className="hover:text-champagne transition-colors">Instagram</a>
+          <a href="https://wa.me/918349970052?text=Hello%20AURIX%20Studios%2C%20I%20would%20like%20to%20inquire%20about%20your%20services!" target="_blank" rel="noopener noreferrer" className="hover:text-champagne transition-colors">WhatsApp</a>
+          <a href="https://www.instagram.com/madebyaurix?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-champagne transition-colors">Instagram</a>
         </div>
         
         <div className="text-xs text-ivory/30 uppercase tracking-widest">
